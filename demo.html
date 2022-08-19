@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body style="height: 10000px">
+
+</body>
+
+<script>
+  start();
+  function start() {
+    var div = document.createElement("div");
+
+    div.style.position = "fixed";
+    div.style.right = "5px";
+    div.style.top = "50px";
+    div.style.color = "#f63a3a";
+    div.style.display="inline-grid"
+    div.style.zIndex = "10000000";
+
+
+    var start_button= document.createElement("button");
+    var end_button= document.createElement("button");
+    var jiasu_button= document.createElement("button");
+    var jiansu_button= document.createElement("button");
+
+    start_button.innerText="开始";
+    end_button.innerText="结束";
+    jiasu_button.innerText="加速";
+    jiansu_button.innerText="减速";
+
+    const ifStart=false;
+    let speed=5;
+    const time=10;
+    let interval=0;
+    function start_click() {
+      if(!ifStart)
+      {
+        interval=setInterval(function (){
+          window.scrollTo(0,speed+window.scrollY)
+          console.log(window.scrollY)
+        },time);
+      }
+
+    }
+    function end_click() {
+      clearInterval(interval)
+    }
+    function jiasu_click() {
+      speed+=5;
+    }
+    function jiansu_click() {
+      if(speed>5)
+      {
+        speed-=5;
+      }
+
+    }
+
+    start_button.addEventListener("click",start_click)
+    end_button.addEventListener("click",end_click)
+    jiasu_button.addEventListener("click",jiasu_click)
+    jiansu_button.addEventListener("click",jiansu_click)
+
+    div.appendChild(start_button);
+    div.appendChild(end_button);
+    div.appendChild(jiasu_button);
+    div.appendChild(jiansu_button);
+
+    document.body.appendChild(div);
+
+
+
+
+  }
+</script>
+</html>
